@@ -13,8 +13,23 @@
     -->
 
     <!-- TODO HU-03: Muestra un mensaje "No hay datos de clima disponibles" cuando no haya datos -->
+    @if(loading){
+      <p class="text-primary">Cargando Clima...</p>
+    }
+    
+    @if(!loading && weatherDetail){
+        <div>
+        <p><strong>Temperatura:</strong> {{ weatherDetail.temp_c }} °C</p>
 
-    <p class="text-muted mb-0">Clima no disponible.</p>
+        <p><strong>Condición:</strong> {{ weatherDetail.condition }}</p>
+
+        <p><strong>Humedad:</strong> {{ weatherDetail.humidity }} %</p>
+        </div>
+    }
+
+    @if(!loading && !weatherDetail){
+      <p class="text-muted">No hay datos de clima disponibles.</p>
+    }
 
   </div>
 </div>
